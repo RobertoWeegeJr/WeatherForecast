@@ -1,0 +1,59 @@
+.custom_scroll {
+    overflow: auto;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 600px;
+}
+
+.mat-table__wrapper .mat-table {
+    min-width: auto !important;
+    width: 100% !important;
+}
+
+.mat-header-row {
+    width: 100%;
+}
+
+.mat-row {
+    width: 100%;
+}
+
+.mat-column-city {
+    min-width: 150px !important
+}
+
+.mat-column-country {
+    min-width: 150px !important
+}
+
+.mat-column-date {
+    min-width: 150px !important
+}
+
+.mat-column-description {
+    min-width: 150px !important
+}
+
+.mat-column-temperature {
+    min-width: 90px !important
+}
+
+.mat-column-pressure {
+    min-width: 90px !important
+}
+
+.mat-column-humidity {
+    min-width: 90px !important
+}
+
+.mat-column-cloudness {
+    min-width: 90px !important
+}
+
+.mat-column-windSpeed {
+    min-width: 90px !important
+}
+
+.mat-column-windDirection {
+    min-width: 90px !important
+}

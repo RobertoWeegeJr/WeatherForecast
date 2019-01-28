@@ -1,0 +1,72 @@
+
+<mat-card class="mat-elevation-z8">
+    <mat-card-title>Forecast</mat-card-title>
+    <form class="example-form">
+        
+        <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Country" aria-label="Country" matInput [formControl]="countriesControl" [matAutocomplete]="auto" (change) = "countryChange()">
+            <mat-error *ngIf="countriesControl.invalid">{{getCountriesErrorMessage()}}</mat-error>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayCountriesFn">
+                <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+                    {{country.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input type="text" placeholder="City" aria-label="City" matInput [formControl]="citiesControl" [matAutocomplete]="auto2" >
+            <mat-error *ngIf="citiesControl.invalid">{{getCitiesErrorMessage()}}</mat-error>
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayCitiesFn">
+                <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                    {{city.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    
+        <button mat-button (click)="addForecast(citiesControl.value)" [disabled]="countriesControl.invalid || citiesControl.invalid">
+            Add City to Forecast
+        </button> 
+    
+    </form>
+
+</mat-card>
+<br>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="forecast">
+        <th mat-header-cell *matHeaderCellDef>Forecast</th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-button (click)="openForecast(element.id)">
+                <mat-icon>cloud</mat-icon>
+            </button> 
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-button (click)="removeForecast(element.id)">
+                <mat-icon>delete</mat-icon>
+            </button> 
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
