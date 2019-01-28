@@ -15,7 +15,7 @@ A base é composta por três tabelas. Uma que armazena os países, uma que armaz
 A modelagem foi feita dessa forma pois a API Open Weather recomenda a utilização do parâmetro id de cidade para solicitar os dados de previsão.Isto pois a utilização de outros parâmetros podem retornar dados ambíguos. Por isso foram armazenados na base os dados de países e cidades de acordo com as indicações da API.
 Com isso também é possível fazer sugestão de valores para o imput do usuário, facilitando a utilização.
 
-Backend
+Backend:
 Foi utilizado Python 3.7.2.
 Dependências:
 - mysql
@@ -35,7 +35,7 @@ O arquivo model.py contem a declaração de todas as classes que representam os 
 O arquivo test_unity.py contem os testes unitarios criados para validar as interações com o banco de dados.
 As configurações de apontamento para a base MySQL estão no arquivo database_connection.json
 
-Frontend
+Frontend:
 Foi utilizado Angular 7.2.
 As dependências estão descritas no arquivo package.json. Portanto basta ter o Node.js instalado e executar o comando "npm install" na pasta frontend/CitiesForecast. Com isso o ambiente irá ser configurado. Após a configuração o comando "ng serve" deve iniciar o servidor web.
 
